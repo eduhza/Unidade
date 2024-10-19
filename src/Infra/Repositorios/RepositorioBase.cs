@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 namespace Infra.Repositorios;
 
 public abstract class RepositorioBase<T, TK>(
-    UnidadeContextoBd contextoBd,
+    ContextoBd contextoBd,
     ILogger<RepositorioBase<T, TK>> logger)
     : IRepositorioBase<T, TK> where T : class
 {
-    private readonly UnidadeContextoBd _contextoBd = contextoBd;
+    private readonly ContextoBd _contextoBd = contextoBd;
     private readonly ILogger<RepositorioBase<T, TK>> _logger = logger;
 
     public async Task<T> AdicionarAsync(T entidade)
@@ -42,7 +42,7 @@ public abstract class RepositorioBase<T, TK>(
                 //TODO: Implementar AtualizadoPor
                 entidadeAuditavel.AtualizadoEm = DateTime.UtcNow;
             }
-            
+
             _contextoBd.Set<T>().Update(entidade);
             return entidade;
         }
