@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infra.Migrations
 {
-    [DbContext(typeof(UnidadeContextoBd))]
+    [DbContext(typeof(ContextoBd))]
     [Migration("20241013012643_CriarTabelaTarefa")]
     partial class CriarTabelaTarefa
     {
